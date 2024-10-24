@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOML</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lobster&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #e0f7fa; /* Cool light-blue background */
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+/*      height: 110vh;*/
+      padding: 20px;
+      overflow: auto; /* Hide scroll during preloader */
+    }
+    
+    /* Preloader styles */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #e0f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* Refined heart shape */
+    .preloader .heart {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      background-color: #ff1493;
+      transform: rotate(-45deg);
+      margin-top: -50px; /* Adjusting the position */
+    }
+
+    .preloader .heart:before,
+    .preloader .heart:after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background-color: #ff1493;
+    }
+
+    .preloader .heart:before {
+      width: 150px;
+      height: 150px;
+      top: -75px;
+      left: 0;
+    }
+
+    .preloader .heart:after {
+      width: 150px;
+      height: 150px;
+      top: 0;
+      left: 75px;
+    }
+
+    /* Pulsating animation */
+    @keyframes pulse {
+      0% {
+        transform: scale(0.9) rotate(-45deg);
+      }
+      50% {
+        transform: scale(1.05) rotate(-45deg);
+      }
+      100% {
+        transform: scale(0.9) rotate(-45deg);
+      }
+    }
+
+    .preloader .heart {
+      animation: pulse 2.5s infinite;
+    }
+    
+    /* Preloader hide effect */
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.5s ease-out, visibility 1.5s ease-out;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1000px;
+      text-align: center;
+      position: relative;
+      visibility: hidden;
+    }
+
+    .image-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto; 
+      transition: transform 0.3s ease;
+    }
+
+    .image-container:hover img {
+      transform: scale(1.05);
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(102, 205, 170, 0.7);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 10px;
+    }
+
+    .image-container:hover .overlay-text {
+      opacity: 1;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 80px;
+    }
+
+    h1 {
+      font-size: 40px !important;
+      color: #20b2aa;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 25px !important;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      font-family: "Lobster", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #20b2aa;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1e90ff;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+      .image-container {
+        margin-right: 50px;
+      }
+      h1 {
+        font-size: 4rem;
+      }
+      p {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="heart"></div>
+  </div>
+
+  <!-- Logo at the top left corner -->
+  <p class="logo">LOML  <p>
+  
+  <div class="container">
+    <div class="image-container">
+      <img src="./images/img3.jpg" alt="Your Girlfriend">
+      <div class="overlay-text">Love of my life <i class="fa-solid fa-heart"></i></div>
+    </div>
+    <div class="text">
+      <h1>From the Depths of My Heart</h1>
+      <p>
+         You are my greatest adventure, my most cherished
+                              friend, and the love of my life. I look forward to
+                              every single day we spend together, creating
+                              memories that will last a lifetime. With you, the
+                              future looks brighter than I could have ever
+                              imagined.
+                            
+      </p>
+      <button>Forever Yours</button>
+    </div>
+  </div>
+
+  <!-- JavaScript to hide preloader after the page loads -->
+  <script>
+    window.addEventListener('load', function() {
+      const preloader = document.querySelector('.preloader');
+      preloader.classList.add('hidden'); // Hide preloader after page loads
+      document.querySelector('.container').style.visibility = 'visible'; // Show content
+    });
+  </script>
+
+</body>
+</html>
